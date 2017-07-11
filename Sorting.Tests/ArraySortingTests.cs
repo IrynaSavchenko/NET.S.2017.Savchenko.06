@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using NUnit.Framework;
 
 namespace Sorting.Tests
@@ -35,17 +35,23 @@ namespace Sorting.Tests
         {
             ArraySorting.Sort(array, ComparerType.SumInRows);
             IStructuralEquatable structEq = array;
-            Assert.True(structEq.Equals(sortedArray, StructuralComparisons.StructuralEqualityComparer));
+            CheckArraysForEquality(array, sortedArray);
         }
 
         [Test, TestCaseSource(nameof(TestData))]
         public void Sort_Array_ArraySortedByRowsDescendingSum(int[][] array, int[][] sortedArray)
         {
             ArraySorting.Sort(array, ComparerType.SumInRows, false);
-            IStructuralEquatable structEq = array;
-            Assert.True(structEq.Equals(sortedArray.Reverse(), StructuralComparisons.StructuralEqualityComparer));
+            Array.Reverse(sortedArray);
+            CheckArraysForEquality(array, sortedArray);
         }
 
         #endregion
+
+        private void CheckArraysForEquality(int[][] firstArray, int[][] secondArray)
+        {
+            IStructuralEquatable structEq = firstArray;
+            Assert.True(structEq.Equals(secondArray, StructuralComparisons.StructuralEqualityComparer));
+        }
     }
 }

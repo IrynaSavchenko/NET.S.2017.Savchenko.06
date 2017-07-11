@@ -44,7 +44,7 @@ namespace Sorting
             {
                 return true;
             }
-            return !(ascending ^ (comparisonResult < 0));
+            return ascending ^ (comparisonResult > 0);
         }
 
         private static void Swap(ref int[] first, ref int[] second)
