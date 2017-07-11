@@ -114,6 +114,35 @@ namespace Sorting.Tests
 
         #endregion
 
+        #region Exception
+
+        [TestCase(null)]
+        public void Sort_NullArray_ThrowsArgumentNullException(int[][] array)
+        {
+            Assert.Throws<ArgumentNullException>(() => ArraySorting.Sort(array, ComparerType.SumInRows));
+        }
+
+        private static IEnumerable<TestCaseData> NullTestData
+        {
+            get
+            {
+                yield return new TestCaseData(new[]
+                {
+                    new[] {-22, 10, -3},
+                    null
+                }, 
+                null);
+            }
+        }
+
+        [Test, TestCaseSource(nameof(NullTestData))]
+        public void Sort_ArrayWithNullRows_ThrowsArgumentNullException(int[][] array, int[][] result)
+        {
+            Assert.Throws<ArgumentNullException>(() => ArraySorting.Sort(array, ComparerType.MaxInRows));
+        }
+
+        #endregion
+
         private void CheckArraysForEquality(int[][] firstArray, int[][] secondArray)
         {
             IStructuralEquatable structEq = firstArray;
