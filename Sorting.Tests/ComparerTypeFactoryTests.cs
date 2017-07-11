@@ -13,7 +13,7 @@ namespace Sorting.Tests
         [TestCase(new[] { 6, -5, 7 }, new[] { 7, 2 }, ComparerType.MaxInRows, ExpectedResult = 0)]
         [TestCase(new[] { 9, 8 }, new[] { 3, 1, 7 }, ComparerType.MinInRows, ExpectedResult = 1)]
         [TestCase(new[] { -11, 3 }, new[] { 0, 11, 9 }, ComparerType.MinInRows, ExpectedResult = -1)]
-        [TestCase(new[] { -2, -5 }, new[] { 1, -10, 2 }, ComparerType.MinInRows, ExpectedResult = 0)]
+        [TestCase(new[] { -2, -10 }, new[] { 1, -10, 2 }, ComparerType.MinInRows, ExpectedResult = 0)]
         public int Compare_ArraysWithComparisonCriteria_ComparisonResult(int[] firstArray, int[] secondArray, ComparerType comparerType)
         {
             return comparerType.Compare(firstArray, secondArray);

@@ -9,17 +9,13 @@ namespace Sorting
     /// </summary>
     public static class ComparerTypeFactory
     {
-        private static readonly IDictionary<ComparerType, Func<int[], int>> ComparersFactory;
-        static ComparerTypeFactory()
+        private static readonly IDictionary<ComparerType, Func<int[], int>> ComparersFactory = 
+            new Dictionary<ComparerType, Func<int[], int>>
         {
-            ComparersFactory =
-                new Dictionary<ComparerType, Func<int[], int>>
-                {
-                    {ComparerType.SumInRows, array => array.Sum()},
-                    {ComparerType.MaxInRows, array => array.Max()},
-                    {ComparerType.MinInRows, array => array.Min()}
-                };
-        }
+            {ComparerType.SumInRows, array => array.Sum()},
+            {ComparerType.MaxInRows, array => array.Max()},
+            {ComparerType.MinInRows, array => array.Min()}
+        };
 
         /// <summary>
         /// Compares firstArray with secondArray according to comparerType
