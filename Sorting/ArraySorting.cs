@@ -27,8 +27,7 @@ namespace Sorting
                 swapped = false;
                 for (int j = 0; j < i; j++)
                 {
-                    if (IsProperlyOrdered(array[j], array[j + 1], comparerType, ascending))
-                        continue;
+                    if (IsProperlyOrdered(array[j], array[j + 1], comparerType, ascending)) continue;
 
                     Swap(ref array[j], ref array[j + 1]);
                     swapped = true;
