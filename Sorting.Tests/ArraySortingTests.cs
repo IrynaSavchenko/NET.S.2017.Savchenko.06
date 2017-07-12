@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
+using Sorting.Tests.Comparers;
 
 namespace Sorting.Tests
 {
@@ -36,14 +37,14 @@ namespace Sorting.Tests
         [Test, TestCaseSource(nameof(SumTestData))]
         public void Sort_Array_ArraySortedByRowsAscendingSum(int[][] array, int[][] sortedArray)
         {
-            ArraySorting.Sort(array, ComparerType.SumInRows);
+            ArraySorting.Sort(array, new SumInRowsAscendingComparer());
             CheckArraysForEquality(array, sortedArray);
         }
 
         [Test, TestCaseSource(nameof(SumTestData))]
         public void Sort_Array_ArraySortedByRowsDescendingSum(int[][] array, int[][] sortedArray)
         {
-            ArraySorting.Sort(array, ComparerType.SumInRows, false);
+            ArraySorting.Sort(array, new SumInRowsDescendingComparer());
             Array.Reverse(sortedArray);
             CheckArraysForEquality(array, sortedArray);
         }
@@ -69,13 +70,13 @@ namespace Sorting.Tests
         [Test, TestCaseSource(nameof(MaxTestData))]
         public void Sort_Array_ArraySortedByRowsAscendingMax(int[][] array, int[][] sortedArray)
         {
-            ArraySorting.Sort(array, ComparerType.MaxInRows);
+            ArraySorting.Sort(array, new MaxInRowsAscendingComparer());
             CheckArraysForEquality(array, sortedArray);
         }
         [Test, TestCaseSource(nameof(MaxTestData))]
         public void Sort_Array_ArraySortedByRowsDescendingMax(int[][] array, int[][] sortedArray)
         {
-            ArraySorting.Sort(array, ComparerType.MaxInRows, false);
+            ArraySorting.Sort(array, new MaxInRowsDescendingComparer());
             Array.Reverse(sortedArray);
             CheckArraysForEquality(array, sortedArray);
         }
@@ -101,13 +102,13 @@ namespace Sorting.Tests
         [Test, TestCaseSource(nameof(MinTestData))]
         public void Sort_Array_ArraySortedByRowsAscendingMin(int[][] array, int[][] sortedArray)
         {
-            ArraySorting.Sort(array, ComparerType.MinInRows);
+            ArraySorting.Sort(array, new MinInRowsAscendingComparer());
             CheckArraysForEquality(array, sortedArray);
         }
         [Test, TestCaseSource(nameof(MinTestData))]
         public void Sort_Array_ArraySortedByRowsDescendingMin(int[][] array, int[][] sortedArray)
         {
-            ArraySorting.Sort(array, ComparerType.MinInRows, false);
+            ArraySorting.Sort(array, new MinInRowsDescendingComparer());
             Array.Reverse(sortedArray);
             CheckArraysForEquality(array, sortedArray);
         }
@@ -119,7 +120,7 @@ namespace Sorting.Tests
         [TestCase(null)]
         public void Sort_NullArray_ThrowsArgumentNullException(int[][] array)
         {
-            Assert.Throws<ArgumentNullException>(() => ArraySorting.Sort(array, ComparerType.SumInRows));
+            Assert.Throws<ArgumentNullException>(() => ArraySorting.Sort(array, new SumInRowsAscendingComparer()));
         }
 
         private static IEnumerable<TestCaseData> NullTestData
@@ -138,7 +139,7 @@ namespace Sorting.Tests
         [Test, TestCaseSource(nameof(NullTestData))]
         public void Sort_ArrayWithNullRows_ThrowsArgumentNullException(int[][] array, int[][] result)
         {
-            Assert.Throws<ArgumentNullException>(() => ArraySorting.Sort(array, ComparerType.MaxInRows));
+            Assert.Throws<ArgumentNullException>(() => ArraySorting.Sort(array, new MaxInRowsAscendingComparer()));
         }
 
         #endregion

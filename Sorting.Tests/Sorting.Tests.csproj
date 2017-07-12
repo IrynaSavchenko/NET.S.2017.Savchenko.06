@@ -44,7 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArraySortingTests.cs" />
-    <Compile Include="ComparerTypeFactoryTests.cs" />
+    <Compile Include="Comparers\MaxInRowsAscendingComparer.cs" />
+    <Compile Include="Comparers\MaxInRowsDescendingComparer.cs" />
+    <Compile Include="Comparers\MinInRowsAscendingComparer.cs" />
+    <Compile Include="Comparers\MinInRowsDescendingComparer.cs" />
+    <Compile Include="Comparers\SumInRowsAscendingComparer.cs" />
+    <Compile Include="Comparers\SumInRowsDescendingComparer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
