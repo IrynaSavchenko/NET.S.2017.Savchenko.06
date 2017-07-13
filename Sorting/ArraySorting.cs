@@ -45,9 +45,6 @@ namespace Sorting
         {
             if (array == null)
                 throw new ArgumentNullException($"{nameof(array)} cannot be null");
-
-            if (Array.Exists(array, row => row == null))
-                throw new ArgumentNullException($"{nameof(array)} elements cannot be null");
         }
     }
 }
